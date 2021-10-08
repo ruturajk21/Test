@@ -29,7 +29,7 @@ pipeline {
                         }
                     }
                     stage('Integration testing'){
-                        steaps{
+                        steps{
                             echo 'Running integration test cases'
                         }
                     
