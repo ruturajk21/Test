@@ -5,10 +5,11 @@ pipeline {
             steps {
                 echo 'Hi I am ruturaj from Pune'
             }
-            stage('two'){
+        } 
+        stage('two'){
                 steps{
                    input('Do you want to continue?')
-                }                
+                }  
             }
             stage('three'){
                 when{
