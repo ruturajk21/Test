@@ -1,9 +1,39 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent any
     stages {
-        stage('build') {
+        stage('one') {
             steps {
-                echo 'Hi I am ruturaj'
+                echo 'Hi I am ruturaj from Pune'
+            }
+            stage('two'){
+                steps{
+                   input('Do you want to continue?')
+                }                
+            }
+            stage('three'){
+                when{
+                    not{
+                          branch "master"
+                    }
+                }
+                steps{
+                   echo 'Hello'
+                }
+            }
+            stage ('Four'){
+                parallel{
+                    stage('Unit Testing'){
+                        steps{
+                            echo 'Running the unit test cases'
+                        }
+                    }
+                    stage('Integration testing'){
+                        steaps{
+                            echo 'Running integration test cases'
+                        }
+                    
+                    }
+                }
             }
         }
     }
